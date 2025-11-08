@@ -1,0 +1,395 @@
+/* Verification Page Styles */
+.verify-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    padding: 15px;
+}
+
+.verify-card {
+    width: 100%;
+    max-width: 360px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.logo-img {
+    width: 180px;
+    margin-bottom: 1.5rem;
+}
+
+.verify-title {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
+}
+
+.verify-subtitle {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.step {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    position: relative;
+}
+
+.step:not(:last-child):after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    width: 8px;
+    height: 2px;
+    background: var(--primary);
+}
+
+.email-box {
+    background: var(--input-bg);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+.email-icon {
+    color: var(--primary);
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+}
+
+.otp-container {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin: 0.75rem 0;
+}
+
+.otp-input {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--input-bg);
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+}
+
+.otp-input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.timer {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.resend {
+    color: var(--primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.resend[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Card Header */
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 240px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.welcome {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.login-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.form-input::placeholder {
+  color: var(--muted);
+}
+
+.password-input {
+  position: relative;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.forgot-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  align-self: flex-start;
+}
+
+.signin-btn,
+.google-btn,
+.sign-in,
+.continue-btn,
+.verify-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--green);
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.signin-btn:hover,
+.google-btn:hover,
+.sign-in:hover,
+.continue-btn:hover,
+.verify-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(21, 179, 122, 0.2);
+  background: linear-gradient(90deg, var(--green) 0%, #18d683 100%);
+  color: #fff;
+}
+
+.signin-btn:active,
+.google-btn:active,
+.sign-in:active,
+.continue-btn:active,
+.verify-btn:active {
+  transform: translateY(1px);
+}
+
+.signin-btn:disabled,
+.google-btn:disabled,
+.sign-in:disabled,
+.continue-btn:disabled,
+.verify-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.arrow-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.card-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.signup-text {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.signup-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.security-text {
+  color: var(--muted);
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  color: var(--primary);
+  font-size: 1.2em;
+}
+
+/* Responsive styles for mobile */
+@media screen and (max-width: 480px) {
+  .verify-container {
+    padding: 12px;
+  }
+  
+  .verify-card {
+    padding: 1.25rem;
+  }
+  
+  .logo-img {
+    width: 160px;
+    margin-bottom: 1.25rem;
+  }
+  
+  .verify-title {
+    font-size: 1.35rem;
+  }
+  
+  .verify-subtitle {
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .progress-steps {
+    gap: 6px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .step {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .otp-container {
+    gap: 5px;
+  }
+  
+  .otp-input {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+  
+  .signin-btn,
+  .google-btn,
+  .sign-in,
+  .continue-btn,
+  .verify-btn {
+    padding: 0.65rem;
+    font-size: 0.88rem;
+  }
+  
+  .card-footer {
+    margin-top: 1.5rem;
+  }
+  
+  .security-text {
+    font-size: 0.72rem;
+    margin-top: 0.65rem;
+  }
+}

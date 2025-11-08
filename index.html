@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Black Rock — Sign in</title>
+  <link rel="stylesheet" href="css/styles-new.css">
+</head>
+<body>
+  <main class="terminal">
+    <div class="terminal-window">
+      <div class="brand">
+        <div class="logo">
+          <div class="logo-icon">◉</div>
+          <div class="logo-text">
+            <span class="green">Black</span><span class="orange">Rock</span>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="welcome">Welcome Back</h1>
+
+      <div class="auth-section">
+        <button class="google-btn" type="button">
+          <img src="assets/google.svg" alt="" class="google-icon">
+          Continue with Google
+        </button>
+
+        <div class="divider">OR</div>
+
+        <form class="form" id="loginForm" novalidate>
+
+          <div class="input-group">
+            <div class="label-row">
+              <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span class="input-label">Email Address</span>
+            </div>
+            <input type="email" name="email" class="input-field" placeholder="you@example.com">
+          </div>
+
+          <div class="input-group">
+            <div class="label-row">
+              <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 15v2m-6 4h12a2 2 0 002-2v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span class="input-label">Password</span>
+            </div>
+            <div class="password-field">
+              <input type="password" name="password" class="input-field" placeholder="Enter your password">
+              <button type="button" class="eye-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <a href="forgot-password.html" class="forgot">Forgot Password?</a>
+
+          <button type="submit" class="sign-in">
+            Sign in →
+          </button>
+        </form>
+      </div>
+
+      <footer>
+        <p class="signup-text">
+          Don't have an account? <a href="signup.html" class="signup-link">Sign up</a>
+        </p>
+        <p class="security"><span class="dot">◉</span> Secure • Encrypted • Private</p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="js/auth-shared.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

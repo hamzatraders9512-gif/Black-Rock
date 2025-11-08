@@ -1,0 +1,647 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #000000;
+  --green: #15b37a;
+  --orange: #ff7f2a;
+  --text: #cccccc;
+  --dim: #666666;
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.02);
+}
+
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.terminal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* match OTP page outer spacing so all cards align the same */
+  padding: 0.5rem;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 60%);
+}
+
+.terminal-window {
+  width: 100%;
+  /* use the OTP card dimensions so other cards match its size */
+  max-width: 340px; /* same as verify-email inline style */
+  padding: 1rem 0.85rem; /* same inner spacing as OTP card */
+  border: 1px solid var(--card-border);
+  border-radius: 8px; /* slightly tighter radius like the OTP card */
+  background: var(--card-bg);
+  box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.25);
+}
+
+.brand {
+  text-align: center;
+  margin-bottom: 0.75rem;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-icon {
+  color: var(--green);
+  font-size: 1.6rem;
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.green { color: var(--green); }
+.orange { color: var(--orange); }
+
+.welcome {
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.8px;
+  text-align: center;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: white;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-family: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+  text-decoration: none; /* remove underline for anchor-styled google button */
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.divider {
+  /* reduced vertical spacing to remove large gaps */
+  margin: 0.4rem 0;
+  color: var(--dim);
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0.55;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--dim);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  /* compact spacing between form groups to remove tall gaps */
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.error-message {
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+  color: #ff4444;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast notifications */
+.toast-container {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  min-width: 240px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  background: rgba(0,0,0,0.75);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.toast.toast-success { border-left: 4px solid var(--green); }
+.toast.toast-error { border-left: 4px solid #ff5c5c; }
+
+/* Info / Notice style to match provided screenshot (blue bordered note) */
+.toast.toast-info {
+  background: rgba(8,20,35,0.85);
+  border: 1px solid rgba(30,130,230,0.9);
+  color: #9fd3ff;
+  box-shadow: none;
+}
+.toast.toast-info .toast-title { color: #9fd3ff; font-weight:700; }
+.toast.toast-info .toast-message { color: #bfe6ff; opacity: 0.95; }
+
+.toast.toast-success { border-left: 4px solid var(--green); }
+
+/* Entry / exit animations for toasts */
+.toast-enter {
+  animation: toastIn 320ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+.toast-exit {
+  animation: toastOut 220ms cubic-bezier(.2,0,.2,1) forwards;
+}
+
+@keyframes toastIn {
+  from { transform: translateY(-8px) scale(0.98); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes toastOut {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to   { transform: translateY(-6px) scale(0.99); opacity: 0; }
+}
+
+.toast-close {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.9);
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0 4px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0; /* avoid additional bottom spacing */
+}
+
+.label-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-icon {
+  color: var(--green);
+  opacity: 0.9;
+}
+
+.input-label {
+  color: var(--green);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  position: relative; /* nudge the label slightly to better center with the svg icon */
+  top: 2px;
+}
+
+.input-field {
+  width: 100%;
+  /* reduced padding and font-size to remove extra vertical space */
+  padding: 0.5rem 0.75rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.85rem;
+  height: 36px; /* reduced from 48px */
+  line-height: 1.2;
+}
+
+.input-field::placeholder {
+  color: var(--dim);
+}
+
+.password-field {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field .input-field {
+  padding-right: 2.5rem; /* Make room for the eye button */
+}
+
+.eye-btn {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.eye-btn svg {
+  color: var(--green);
+  opacity: 0.8;
+}
+
+.forgot {
+  color: var(--green);
+  text-decoration: none;
+  font-size: 0.9rem;
+  opacity: 0.95;
+  margin: 0.25rem 0; /* compact spacing */
+}
+
+.sign-in {
+  width: 100%;
+  padding: 0.62rem;
+  background: var(--green);
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.92rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.2rem;
+  transition: all 0.12s ease-in-out;
+}
+
+.sign-in:hover,
+.continue-btn:hover,
+.google-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(21, 179, 122, 0.2);
+  background: linear-gradient(90deg, var(--green) 0%, #18d683 100%);
+  color: #fff;
+  text-decoration: none; /* ensure no underline on hover */
+}
+
+.sign-in:active,
+.continue-btn:active,
+.google-btn:active {
+  transform: translateY(1px);
+}
+
+.sign-in:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Sign up page specific styles */
+.header-text {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  color: var(--dim);
+  font-size: 0.88rem;
+  margin-top: 0.4rem;
+}
+
+.welcome {
+  font-size: 1.15rem;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: 0.8px;
+}
+
+.name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 0;
+}
+
+/* Password requirements styling: ensure it sits under the password input and uses a compact font */
+.password-requirements-container {
+  margin: 0.25rem 0;
+}
+
+.pw-strength-container {
+  /* Increased by ~1.5x for better readability (was 0.425rem) */
+  font-size: 0.64rem !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: none;
+  margin-top: 6px;
+}
+
+.pw-strength-container.visible {
+  display: block;
+}
+
+.pw-bar-wrap {
+  display: none; /* Hide the strength bar */
+}
+
+.pw-checklist {
+  color: var(--dim);
+  display: grid;
+  gap: 2px;
+  padding-left: 4px;
+}
+
+.pw-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  opacity: 0.7;
+}
+
+.pw-item .mark {
+  color: var(--dim);
+}
+
+.pw-item.valid {
+  color: var(--green);
+  opacity: 1;
+}
+
+.pw-checklist {
+  /* Increased by ~1.5x for better readability (was 0.425rem) */
+  font-size: 0.64rem !important;
+  color: var(--dim);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+}
+
+.pw-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pw-bar-wrap {
+  height: 6px !important; /* increased to match 1.5x larger text */
+  margin-bottom: 0.25rem !important;
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.pw-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--green);
+  transition: width 180ms ease, background 180ms ease;
+}
+
+/* Make first/last name inputs slightly smaller so long names/placeholder text remain visible */
+.name-row .input-field {
+  /* keep name inputs compact */
+  font-size: 0.78rem;
+  padding: 0.45rem 0.6rem;
+}
+
+/* Target the specific name placeholders to ensure they match the smaller size */
+input[placeholder="Enter your first name"],
+input[placeholder="Enter your last name"] {
+  font-size: 0.62rem;
+}
+
+input[placeholder="Enter your first name"]::placeholder,
+input[placeholder="Enter your last name"]::placeholder {
+  font-size: 0.62rem;
+  color: var(--dim);
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.back-btn {
+  flex: 1;
+  padding: 0.875rem;
+  background: transparent;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+
+.back-btn:hover {
+  border-color: var(--dim);
+}
+
+.continue-btn {
+  flex: 1;
+  padding: 0.875rem;
+  height: 48px;
+  background: var(--green);
+  color: black;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.signup-form {
+  margin-top: 1rem;
+}
+
+.login-text {
+  color: var(--dim);
+  font-size: 0.9rem;
+}
+
+.login-link {
+  color: var(--green);
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 0.9rem;
+  text-align: center;
+}
+
+.signup-text {
+  color: var(--dim);
+  font-size: 0.9rem;
+}
+
+.signup-link {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.security {
+  margin-top: 0.75rem;
+  color: var(--dim);
+  font-size: 0.8rem;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  color: var(--green);
+  font-size: 1.2em;
+}
+
+/* Responsive styles for mobile devices */
+/* Updated styles to match the card design */
+.welcome {
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.subtitle {
+  color: var(--dim);
+  font-size: 0.9375rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.input-group {
+  margin-bottom: 0; /* remove extra vertical gap between groups */
+}
+
+.input-label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  color: var(--green);
+  position: relative; /* ensure consistent vertical alignment across breakpoints */
+  top: 2px;
+}
+
+.input-field {
+  height: 36px; /* compact inputs on signup */
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 10px;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+}
+
+.input-field::placeholder {
+  color: var(--dim);
+  opacity: 0.8;
+}
+
+.button-row {
+  margin-top: 0.6rem; /* reduce gap above buttons */
+  gap: 0.75rem;
+}
+
+.back-btn, .continue-btn {
+  height: 40px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  padding: 0 1rem;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 480px) {
+  .terminal {
+    padding: 1rem;
+  }
+  
+  .terminal-window {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .input-field {
+    height: 44px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .button-row {
+    flex-direction: column;
+  }
+  
+  .back-btn, .continue-btn {
+    width: 100%;
+    height: 44px;
+  }
+  
+  .name-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

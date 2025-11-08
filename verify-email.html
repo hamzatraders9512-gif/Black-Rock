@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email - Black Rock</title>
+    <link rel="stylesheet" href="css/styles-new.css">
+    <link rel="stylesheet" href="css/styles-additional.css">
+</head>
+<body>
+            <main class="terminal" style="padding: 0.5rem;">
+                <div class="terminal-window" style="max-width: 340px; padding: 1rem 0.85rem;">
+                    <div style="text-align: center; margin-bottom: 0.25rem;">
+                        <div style="display: inline-flex; align-items: center; gap: 0.5rem; justify-content: center;">
+                            <div style="color: var(--green); font-size: 1.6rem;">◉</div>
+                            <div style="font-size: 2rem; font-weight: bold; letter-spacing: -1px;">
+                                <span style="color: var(--green);">Black</span><span style="color: var(--orange);">Rock</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h1 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.25rem; letter-spacing: 0px; text-align: center;">Verify Your Email</h1>
+                    <div style="background: var(--input-bg); border-radius: 6px; padding: 0.65rem; margin-bottom: 0.5rem; border: 1px solid var(--input-border); text-align: center;">
+                        <div class="email-icon" style="display: flex; justify-content: center; align-items: center; margin: 0 auto 0.35rem;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" style="color: var(--green);"><path d="M4 4h16v16H4V4zm8 8l8-5H4l8 5zm0 2l-8-5v10h16V9l-8 5z" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+                        </div>
+                        <div style="font-family: 'Courier New', monospace; color: #fff; font-size: 0.85rem; margin-bottom: 0.25rem; white-space: nowrap;">We sent a 6-digit code to</div>
+                        <div id="userEmail" style="font-family: 'Courier New', monospace; color: var(--green); font-weight: 500; font-size: 0.85rem; margin-bottom: 0.25rem;"></div>
+                        <div class="timer" style="color: var(--dim); font-size: 0.8rem; margin-bottom: 0.25rem;">
+                            <svg style="vertical-align: middle; margin-right: 3px;" width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="var(--dim)" stroke-width="2" fill="none"/><path d="M12 8v4l3 2" stroke="var(--dim)" stroke-width="2" fill="none"/></svg>
+                            Code expires in <span id="countdown">9:34</span>
+                        </div>
+                    </div>
+                    <form id="otpForm" class="form" style="margin-bottom: 0.25rem;">
+                        <div class="input-group">
+                            <span class="input-label" style="font-size: 0.85rem; color: var(--green); margin-bottom: 0.2rem;">Verification Code</span>
+                            <div class="otp-container" style="margin-bottom: 0.35rem; display: flex; gap: 0.25rem;">
+                                <input type="text" class="otp-input input-field" style="width: 34px; height: 34px; font-size: 0.85rem;" maxlength="1" required>
+                                <input type="text" class="otp-input input-field" style="width: 34px; height: 34px; font-size: 0.85rem;" maxlength="1" required>
+                                <input type="text" class="otp-input input-field" style="width: 34px; height: 34px; font-size: 0.85rem;" maxlength="1" required>
+                                <input type="text" class="otp-input input-field" style="width: 34px; height: 34px; font-size: 0.85rem;" maxlength="1" required>
+                                <input type="text" class="otp-input input-field" style="width: 34px; height: 34px; font-size: 0.85rem;" maxlength="1" required>
+                                <input type="text" class="otp-input input-field" style="width: 34px; height: 34px; font-size: 0.85rem;" maxlength="1" required>
+                            </div>
+                            <span style="color: var(--dim); font-size: 0.8rem; margin-bottom: 0.35rem; text-align: center; display: block;">Enter the 6-digit code sent to your email</span>
+                        </div>
+                        <div style="text-align: center; margin-bottom: 0.35rem;">
+                            <span id="resendBtn" style="font-size: 0.8rem; color: var(--green); cursor: pointer;">Resend in 9:35</span>
+                        </div>
+                        <div style="display: flex; gap: 0.35rem; margin-bottom: 0.1rem;">
+                            <button type="button" class="back-btn" style="font-size: 0.85rem; padding: 0.5rem; flex: 1; border: 1px solid var(--input-border); background: transparent; color: var(--text); border-radius: 6px;">← Back</button>
+                            <button type="submit" class="continue-btn" style="font-size: 0.85rem; padding: 0.5rem; flex: 1; background: var(--green); border: none; border-radius: 6px; color: black;">Verify Email →</button>
+                        </div>
+                    </form>
+                    <div style="margin-top: 0.85rem;">
+                        <p style="font-size: 0.8rem; color: var(--dim); text-align: center; margin-bottom: 0.2rem;">
+                            Already have an account? <a href="index.html" style="color: var(--green); text-decoration: none;">Sign in</a>
+                        </p>
+                        <p style="font-size: 0.75rem; color: var(--dim); display: flex; align-items: center; justify-content: center; gap: 0.2rem;">
+                            <span style="color: var(--green);">◉</span> Secure • Encrypted • Private
+                        </p>
+                    </footer>
+                </div>
+            </main>
+
+    <script src="js/auth-shared.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('otpForm');
+            const inputs = document.querySelectorAll('.otp-input');
+            const resendBtn = document.getElementById('resendBtn');
+            const countdownEl = document.getElementById('countdown');
+            const userEmailEl = document.getElementById('userEmail');
+            const backBtn = document.querySelector('.back-btn');
+            
+            // Set user's email from URL parameter
+            const email = new URLSearchParams(window.location.search).get('email');
+            userEmailEl.textContent = email || 'your email';
+            
+            // Initialize OTP input handling and auto-focus
+            initializeOTPInputs(inputs);
+
+            // Initialize the countdown timer for the resend button
+            initializeCountdown(resendBtn, countdownEl, 600); // 10 minutes in seconds
+
+            // Handle form submission
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const raw = Array.from(inputs).map(input => input.value.trim()).join('');
+                // Server stores OTP as 3-3 with a dash (e.g. 123-456). Format to match.
+                let otp = raw;
+                if (raw.length === 6) {
+                    otp = raw.slice(0,3) + '-' + raw.slice(3);
+                }
+
+                try {
+                    const response = await fetch('/api/auth/verify-otp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email, otp })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        window.location.href = '/dashboard';
+                    } else {
+                        showToast(data.message || 'Invalid OTP. Please try again.', 'error');
+                    }
+                    } catch (error) {
+                    console.error('Error:', error);
+                    showToast('An error occurred. Please try again.', 'error');
+                }
+            });
+
+            // Handle resend button click
+            resendBtn.addEventListener('click', async (e) => {
+                if (e.target.disabled) return;
+                
+                try {
+                    const response = await fetch('/api/auth/resend-otp', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ email })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        showToast('New verification code sent!', 'success');
+                        // Reset countdown timer after successful resend
+                        initializeCountdown(resendBtn, countdownEl, 600);
+                    } else {
+                        showToast(data.message || 'Failed to resend code.', 'error');
+                    }
+                    } catch (error) {
+                    console.error('Error:', error);
+                    showToast('An error occurred. Please try again.', 'error');
+                }
+            });
+
+            // Handle back button click
+            backBtn.addEventListener('click', () => {
+                window.history.back();
+            });
+        });
+    </script>
+</body>
+</html>

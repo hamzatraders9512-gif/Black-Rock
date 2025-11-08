@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #000000;
+  --green: #15b37a;
+  --orange: #ff7f2a;
+  --text: #cccccc;
+  --dim: #666666;
+  --input: #111111;
+}
+
+@font-face {
+  font-family: 'Terminal';
+  src: local('Courier New');
+}
+
+body {
+  margin: 0;
+  font-family: 'Terminal', monospace;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: none;
+}
+.terminal {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.logo {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.card-header{ text-align:center; margin-bottom:8px }
+.logo{ width:320px; height:auto; display:block; margin:0 auto 24px }
+.welcome{ font-weight:700; letter-spacing:1px; margin:0 0 8px; color:#f6fbf9 }
+.actions{ padding-top:6px }
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; cursor:pointer; border-radius:8px; padding:12px 14px; font-weight:600 }
+.google-btn{ width:100%; background:#fff; color:#111; border:none; padding:12px; font-weight:600; border-radius:8px; box-shadow:none }
+.google-btn .g-icon{ display:inline-flex; align-items:center; justify-content:center }
+.or-line{ display:flex; align-items:center; gap:12px; margin:18px 0 }
+.or-line::before, .or-line::after{ content:''; flex:1; height:1px; background:rgba(255,255,255,0.03) }
+.or-line span{ font-size:12px; padding:4px 10px; background:transparent; color:var(--muted); }
+.tab-area{ background:transparent }
+.tabs{ display:flex; gap:8px; margin-bottom:12px }
+.tab{ background:rgba(255,255,255,0.03); color:var(--muted); border:none; padding:10px 14px; border-radius:8px; font-weight:600 }
+.tab.active{ background: linear-gradient(90deg, rgba(21,179,122,0.12), rgba(255,127,42,0.06)); color:var(--accent) }
+.login-form{ display:flex; flex-direction:column; gap:12px }
+.field-label{ font-size:13px; color:var(--muted); margin-bottom:4px }
+.input{ width:100%; padding:8px 10px; border-radius:6px; border:1px solid rgba(255,255,255,0.03); background:rgba(255,255,255,0.01); color:#dfeee5; font-size:0.85rem }
+.input::placeholder{ color:rgba(255,255,255,0.12) }
+.password-row{ display:flex; gap:8px; align-items:center }
+.password-row .input{ flex:1 }
+.eye{ background:transparent; border:none; color:var(--muted); cursor:pointer; padding:8px 10px; border-radius:8px }
+.forgot{ display:inline-block; margin-top:4px; color:var(--accent); text-decoration:none; font-size:13px }
+.sign-btn{ margin-top:8px; width:100%; background:linear-gradient(90deg, var(--accent), #10a070); color:#04281e; border:none; padding:12px; border-radius:8px }
+.card-footer{ text-align:center; margin-top:16px; color:var(--muted) }
+.card-footer a{ color:var(--accent); text-decoration:none; font-weight:600 }
+.meta{ font-size:12px; margin-top:8px; color:rgba(255,255,255,0.12) }
+/* small screens */
+@media (max-width:520px){ .card{ width:100%; padding:20px } .logo{ width:200px } }

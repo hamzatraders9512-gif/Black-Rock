@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Rock - Dashboard</title>
+  <link rel="stylesheet" href="css/styles-new.css">
+  <style>
+    .dashboard {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 60%);
+    }
+    .dashboard-card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px -1px rgba(0,0,0,0.2);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .welcome-text {
+      margin: 1.5rem 0;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+    .user-info {
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .profile-picture {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+    }
+    .user-name {
+      color: var(--green);
+      font-size: 1.1rem;
+    }
+    .user-email {
+      color: var(--dim);
+      font-size: 0.9rem;
+    }
+    .logout-btn {
+      background: var(--green);
+      color: black;
+      border: none;
+      border-radius: 8px;
+      padding: 0.875rem 1.5rem;
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="dashboard">
+    <div class="dashboard-card">
+      <div class="logo">
+        <div class="logo-icon">◉</div>
+        <div class="logo-text">
+          <span class="green">Black</span><span class="orange">Rock</span>
+        </div>
+      </div>
+      <h1 class="welcome-text">Welcome to Black Rock</h1>
+      <div class="user-info">
+        <img id="profilePicture" class="profile-picture" src="" alt="Profile Picture">
+        <div id="userName" class="user-name"></div>
+        <div id="userEmail" class="user-email"></div>
+      </div>
+      <a href="/api/auth/logout" class="logout-btn">Logout</a>
+    </div>
+  </main>
+
+  <script>
+    // Fetch user data when page loads
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('/api/auth/status');
+        const data = await response.json();
+        
+        if (data.isAuthenticated) {
+          const { user } = data;
+          document.getElementById('profilePicture').src = user.profilePicture;
+          document.getElementById('userName').textContent = `${user.firstName} ${user.lastName}`;
+          document.getElementById('userEmail').textContent = user.email;
+        } else {
+          window.location.href = '/login';
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        window.location.href = '/login';
+      }
+    });
+  </script>
+</body>
+</html>

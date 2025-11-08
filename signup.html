@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Black Rock — Sign up</title>
+  <link rel="stylesheet" href="css/styles-new.css">
+</head>
+<body>
+  <main class="terminal">
+    <div class="terminal-window">
+      <div class="brand">
+        <div class="logo">
+          <div class="logo-icon">◉</div>
+          <div class="logo-text">
+            <span class="green">Black</span><span class="orange">Rock</span>
+          </div>
+        </div>
+      </div>
+
+
+      <h1 class="welcome">Enter Your Details</h1>
+
+      <a class="google-btn" href="/api/auth/google">
+        <img src="assets/google.svg" alt="" class="google-icon">
+        Continue with Google
+      </a>
+
+      <div class="divider">OR</div>
+
+      <p class="subtitle" style="text-align:center;margin:0.5rem 0 0.75rem;">We need some basic information</p>
+
+      <form class="form signup-form">
+        <div class="name-row">
+          <div class="input-group">
+            <div class="label-row">
+              <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span class="input-label">First Name</span>
+            </div>
+            <input type="text" class="input-field" placeholder="Enter your first name" name="firstName">
+          </div>
+          <div class="input-group">
+            <div class="label-row">
+              <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              <span class="input-label">Last Name</span>
+            </div>
+            <input type="text" class="input-field" placeholder="Enter your last name" name="lastName">
+          </div>
+        </div>
+        <div class="input-group">
+          <div class="label-row">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span class="input-label">Email Address</span>
+          </div>
+          <input type="email" class="input-field" placeholder="you@example.com" name="email">
+        </div>
+
+        <div class="input-group">
+          <div class="label-row">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span class="input-label">Password</span>
+          </div>
+          <div class="password-field">
+            <input id="signupPassword" type="password" class="input-field" placeholder="Enter your password" name="password">
+            <button type="button" class="eye-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2"/>
+                <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+          <div id="passwordRequirements" class="password-requirements-container">
+            <!-- Password strength requirements will be injected here -->
+          </div>
+        </div>
+
+        <div class="input-group">
+          <div class="label-row">
+            <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M12 15v2m-6 4h12a2 2 0 002-2v-8a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8V7z" stroke="currentColor" stroke-width="2"/>
+            </svg>
+            <span class="input-label">Confirm Password</span>
+          </div>
+          <div class="password-field">
+            <input id="signupConfirmPassword" type="password" class="input-field" placeholder="Confirm your password" name="confirmPassword">
+            <button type="button" class="eye-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="2"/>
+                <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="button-row">
+          <a href="index.html" class="back-btn">← Back</a>
+          <button type="submit" class="continue-btn">Create Account</button>
+        </div>
+      </form>
+
+      <footer>
+        <p class="signup-text">Already have an account? <a href="index.html" class="signup-link">Sign in</a></p>
+        <p class="security"><span class="dot">◉</span> Secure • Encrypted • Private</p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="js/auth-shared.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initializePasswordToggles();
+      const signupPassword = document.getElementById('signupPassword');
+      const form = document.querySelector('.signup-form');
+
+
+      // Inject password strength requirements below password field, initially hidden
+      let pwStrength = attachPasswordStrength(signupPassword);
+      if (pwStrength && pwStrength.container) {
+        pwStrength.container.style.display = 'none';
+        
+        signupPassword.addEventListener('input', function() {
+          if (signupPassword.value.length > 0 && pwStrength.container.style.display === 'none') {
+            pwStrength.container.style.display = 'block';
+            pwStrength.container.classList.add('visible');
+          } else if (signupPassword.value.length === 0) {
+            pwStrength.container.classList.remove('visible');
+            setTimeout(() => {
+              if (signupPassword.value.length === 0) {
+                pwStrength.container.style.display = 'none';
+              }
+            }, 300);
+          }
+        });
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = {
+          firstName: form.querySelector('input[name="firstName"]').value,
+          lastName: form.querySelector('input[name="lastName"]').value,
+          email: form.querySelector('input[name="email"]').value,
+          password: form.querySelector('input[name="password"]').value,
+          confirmPassword: form.querySelector('input[name="confirmPassword"]').value
+        };
+
+        // Password requirements
+        if (!formData.password || formData.password.length < 8) {
+          showToast('Password must be at least 8 characters.', 'error');
+          return;
+        }
+        if (!/[A-Z]/.test(formData.password) || !/[a-z]/.test(formData.password)) {
+          showToast('Password must include uppercase and lowercase letters.', 'error');
+          return;
+        }
+        if (!/[0-9]/.test(formData.password) || !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>/?]/.test(formData.password)) {
+          showToast('Password must include numbers and special characters.', 'error');
+          return;
+        }
+        if (formData.password !== formData.confirmPassword) {
+          showToast('Passwords do not match.', 'error');
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/auth/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+          const data = await response.json();
+          if (response.ok) window.location.href = `/verify-email.html?email=${encodeURIComponent(formData.email)}`;
+          else showToast(data.message || 'Signup failed. Please try again.', 'error');
+        } catch (err) {
+          console.error(err);
+          showToast('An error occurred. Please try again.', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
